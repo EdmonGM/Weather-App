@@ -8,7 +8,8 @@ import { ACTION_TYPES } from "./weatherActionTypes";
 import Form from "./Form";
 function App() {
   const [state, dispatch] = useReducer(weatherReducer, INITIAL_STATE);
-  const [input, setInput] = useState();
+  const [input, setInput] = useState("");
+  const [searched, setSearched] = useState(false);
   const [city, setCity] = useState({
     longitude: 0,
     latitude: 0,
@@ -39,6 +40,7 @@ function App() {
           longitude: Number(data[0].lon),
         })
       );
+    setSearched(true);
     return true;
   }
   console.log(city);
@@ -52,7 +54,7 @@ function App() {
         handleSearch={handleSearch}
         handleFetch={handleFetch}
       />
-      <Card weather={state} city={city} />
+      {searched && <Card weather={state} city={city} />}
     </>
   );
 }

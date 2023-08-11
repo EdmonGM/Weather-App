@@ -51,4 +51,30 @@ nav {
 }
 form {
   margin: 40px auto;
+  background-color: aliceblue;
+  width: 600px;
+}
+.form-container {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.form-container > button {
+  background-color: #48acf0;
+  border: 2px solid #030027;
+  border-radius: 14px;
+  padding: 6px 30px;
+  font-size: 1.3rem;
+  color: #030027;
+  cursor: pointer;
+}
+.form-container > button:hover {
+  background-color: #63b9f3;
+}
+.form-container > div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }

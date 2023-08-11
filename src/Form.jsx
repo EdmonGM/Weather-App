@@ -11,14 +11,17 @@ export default function Form({ input, setInput, handleSearch, handleFetch }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="city">City Name:</label>
-      <input
-        type="text"
-        name="city"
-        onChange={(e) => handleChange(e.target.value)}
-      />
-
-      <button>Search</button>
+      <div className="form-container">
+        <div>
+          <label htmlFor="city">City Name:</label>
+          <input
+            type="text"
+            name="city"
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        </div>
+        <button>Search</button>
+      </div>
     </form>
   );
 }
