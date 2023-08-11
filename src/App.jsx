@@ -54,7 +54,7 @@ function App() {
         handleSearch={handleSearch}
         handleFetch={handleFetch}
       />
-      {searched && <Card weather={state} city={city} />}
+      {searched && !state.loading && <Card weather={state} city={city} />}
     </>
   );
 }

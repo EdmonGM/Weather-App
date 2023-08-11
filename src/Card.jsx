@@ -1,11 +1,17 @@
+import { useState } from "react";
+
 export default function Card({ weather, city }) {
-  var temps = [];
+  var time = {
+    hour: new Date().getHours(),
+    minutes: new Date().getMinutes(),
+  };
+  const [temps, setTemps] = useState([]);
   function getFiveTemps() {
-    for (let i = 0; i < 5; i++) {
-      temps.push(weather.weather.temperature[i]);
+    console.log(temps);
+    for (let i = time.hour - 2; i < time.hour + 2; i++) {
+      setTemps((current) => [...current, weather.weather.temperature[i]]);
     }
   }
-  console.log(temps);
   return (
     <div className="card">
       <div className="card-heading">
@@ -15,12 +21,10 @@ export default function Card({ weather, city }) {
       <div className="card-content">
         <img src="../public/part-cloudy-2.png" width="265px" />
         <div className="data">
-          {temps.map((temp) => {
-            console.log(temp);
-            return <div key={crypto.randomUUID()}>{temp}</div>;
-          })}
-          <div className="time">2:00AM</div>
-          <div className="temp">29°C</div>
+          <div className="time">
+            {time.hour}:{time.minutes < 10 ? `0${time.minutes}` : time.minutes}
+          </div>
+          <div className="temp">{temps[0]}°C</div>
         </div>
       </div>
       <button onClick={getFiveTemps}>Get</button>
